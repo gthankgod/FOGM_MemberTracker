@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Joi = require('joi');
-// const { Members } = require('../Models/Members');
+const { Members } = require('../Models/Members');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 let bcrypt = require('bcryptjs');
@@ -13,8 +13,8 @@ let bcrypt = require('bcryptjs');
 // @access Public
 router.get('/', auth, async (req, res) => {
     try {
-        const user = await Members.findById(req.user.id).select('-password');
-        res.json(user);
+        const member = await Members.findById(req.member.id).select('-password');
+        res.json(member);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ msg: 'Server error' });
@@ -32,17 +32,17 @@ router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     try {
         let member = await Members.findOne({ username });
-        if (!user) {
+        if (!member) {
             return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
         }
-        let isMatch = await bcrypt.compare(password, user.password);
+        let isMatch = await bcrypt.compare(password, member.password);
         if (!isMatch) {
             return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
         }
 
         const payload = {
-            user: {
-                id: user.id
+            member: {
+                id: member.id
             }
         }
 
