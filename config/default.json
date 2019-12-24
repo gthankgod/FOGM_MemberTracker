@@ -1,4 +1,5 @@
 {
   "dbpassword": "",
-  "dbusername": "fogm"
+  "dbusername": "fogm",
+  "jwtSecret": "12345"
 }

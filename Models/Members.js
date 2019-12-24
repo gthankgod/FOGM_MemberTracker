@@ -3,26 +3,31 @@ const mongoose = require('mongoose');
 
 
 const MemberSchema = new mongoose.Schema({
-    firstName: {
+    firstname: {
         type: String,
         required: true,
         minlength: 3,
         maxlength: 50
     },
-    lastName: {
+    lastname: {
         type: String,
         required: true,
         minlength: 3,
         maxlength: 50
     },
-    uaername: {
+    username: {
         type: String,
         required: true,
         minlength: 3,
         maxlength: 50
     },
     family: {
-        type: FamilySchema
+        familyName: {
+            type: String
+        },
+        roleInFamily: {
+            type: String
+        }
     }
     ,
     gender: {
@@ -35,18 +40,18 @@ const MemberSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    phoneNumber: {
+    phonenumber: {
         type: String,
         required: true
     },
-    whatsappNumber: {
+    whatsappnumber: {
         type: String
     },
-    homeAddress: {
+    homeaddress: {
         type: String,
         required: true
     },
-    workAddress: {
+    workaddress: {
         type: String
     },
     branch: {
@@ -71,18 +76,19 @@ module.exports.validateMember = validateMember;
 
 function validateMember(member) {
     const schema = {
-        firstName: Joi.string().min(3).max(50).required(),
-        lastName: Joi.string().min(3).max(50).required(),
+        firstname: Joi.string().min(3).max(50).required(),
+        lastname: Joi.string().min(3).max(50).required(),
+        username: Joi.string().min(3).max(50).required(),
         family: Joi.string(),
         gender: Joi.string().required(),
         email: Joi.string(),
         password: Joi.string().min(5).max(255),
-        phoneNumber: Joi.string().min(11).max(50),
-        whatsappNumber: Joi.string().min(11).max(50),
-        homeAddress: Joi.string().min(3).max(50).required(),
-        workAddress: Joi.string().min(3).max(50),
+        phonenumber: Joi.string().min(11).max(50),
+        whatsappnumber: Joi.string().min(11).max(50),
+        homeaddress: Joi.string().min(3).max(50).required(),
+        workaddress: Joi.string().min(3).max(50),
         branch: Joi.string().min(3).max(50).required(),
-        birthday: Joi.string().min(3).max(50).required(),
+        birthday: Joi.string().required(),
         role: Joi.string(),
         unit: Joi.string()
     };

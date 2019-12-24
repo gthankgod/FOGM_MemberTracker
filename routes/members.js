@@ -19,8 +19,8 @@ router.post('/', (req, res) => {
     const { firstName, lastName, family, gender, email, phoneNumber, whatsappNumber, homeAddress, workAddress, branch, birthday, unit } = req.body;
 
     member = new Members({
-        firstName,
-        lastName,
+        firstname,
+        lastname,
         family,
         gender,
         email,
