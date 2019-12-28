@@ -3,15 +3,22 @@ import { LOGIN_SUCCESS, LOGIN_FAIL } from './types';
 
 export const login = (body) => async dispatch => {
     const option = {
-        "Content-Type": "application/json",
-        Accept: "*/*",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "*/*"
+        },
         method: "POST",
-        body
+        body: JSON.stringify(body)
     };
-    console.log(option);
     try {
         const res = await fetch('/auth/login', option);
         const data = await res.json();
+        console.log(data);
+        if (data.status === 'error') {
+            return dispatch({
+                type: LOGIN_FAIL
+            });
+        }
         dispatch({
             type: LOGIN_SUCCESS,
             payload: data

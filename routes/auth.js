@@ -27,17 +27,17 @@ router.get('/', auth, async (req, res) => {
 router.post('/login', async (req, res) => {
 
     const { error } = validate(req.body);
-    if (error) { return res.status(400).json({ msg: 'Invalid Entries' }); }
+    if (error) { return res.status(400).json({ msg: 'Invalid Entries', status: 'error' }); }
 
     const { username, password } = req.body;
     try {
         let member = await Members.findOne({ username });
         if (!member) {
-            return res.status(400).json({ msg: 'Invalid credentials' });
+            return res.status(400).json({ msg: 'Invalid credentials', status: 'error' });
         }
         let isMatch = await bcrypt.compare(password, member.password);
         if (!isMatch) {
-            return res.status(400).json({ msg: 'Invalid credentials' });
+            return res.status(400).json({ msg: 'Invalid credentials', status: 'error' });
         }
 
         const payload = {

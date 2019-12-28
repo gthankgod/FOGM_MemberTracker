@@ -2,16 +2,16 @@ import { LOGIN_SUCCESS, LOGIN_FAIL } from "../actions/types";
 
 const initialState = {
     loading: true,
-    loggedIn: false
+    isAuthenticated: false
 };
 
 
 const auth = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
-            return { ...state, loading: false, loggedIn: true };
+            return { ...state, loading: false, isAuthenticated: true };
         case LOGIN_FAIL:
-            return { ...state }
+            return { ...state, loading: false, isAuthenticated: false }
 
         default:
             return state;
