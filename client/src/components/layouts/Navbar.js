@@ -14,6 +14,7 @@ const Navbar = ({ isAuthenticated }) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
+
                         <li className="nav-item">
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
@@ -21,6 +22,11 @@ const Navbar = ({ isAuthenticated }) => {
                             <Link className="nav-link" to="/logout">Logout</Link>
                         </li>
                     </ul>
+                    <form className="form-inline active-cyan-4 ml-4">
+                        <input className="form-control form-control-sm mr-3" type="text" placeholder="Search by Surname"
+                            aria-label="Search" />
+                        <i className="fas fa-search" aria-hidden="true"></i>
+                    </form>
                 </div>
             </Fragment>
         )
@@ -40,7 +46,7 @@ const Navbar = ({ isAuthenticated }) => {
             </Fragment>
         );
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container">
                 {Nav}
             </div>
