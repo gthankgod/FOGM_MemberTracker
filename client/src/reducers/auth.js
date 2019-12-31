@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from "../actions/types";
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "../actions/types";
 
 const initialState = {
     loading: true,
@@ -12,7 +12,8 @@ const auth = (state = initialState, action) => {
             return { ...state, loading: false, isAuthenticated: true };
         case LOGIN_FAIL:
             return { ...state, loading: false, isAuthenticated: false }
-
+        case LOGOUT:
+            return { ...state, isAuthenticated: false }
         default:
             return state;
     }

@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { logout } from '../../actions/auth';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
-const Navbar = ({ isAuthenticated }) => {
+const Navbar = ({ isAuthenticated, logout }) => {
 
     const Nav = isAuthenticated ? (
         (
@@ -19,7 +20,7 @@ const Navbar = ({ isAuthenticated }) => {
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/logout">Logout</Link>
+                            <Link className="nav-link" onClick={() => logout()}>Logout</Link>
                         </li>
                     </ul>
                     <form className="form-inline active-cyan-4 ml-4">
@@ -56,10 +57,11 @@ const Navbar = ({ isAuthenticated }) => {
 }
 
 Navbar.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired
+    isAuthenticated: PropTypes.bool.isRequired,
+    logout: PropTypes.func.isRequired
 }
 
 const mapStateToProps = ({ auth }) => ({
     isAuthenticated: auth.isAuthenticated
 });
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps, { logout })(Navbar)

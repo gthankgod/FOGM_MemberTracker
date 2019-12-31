@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAIL } from './types';
+import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './types';
 
 
 export const login = (body) => async dispatch => {
@@ -13,7 +13,6 @@ export const login = (body) => async dispatch => {
     try {
         const res = await fetch('/auth/login', option);
         const data = await res.json();
-        console.log(data);
         if (data.status === 'error') {
             return dispatch({
                 type: LOGIN_FAIL
@@ -30,4 +29,10 @@ export const login = (body) => async dispatch => {
         });
     }
 
+}
+
+export const logout = () => dispatch => {
+    dispatch({
+        type: LOGOUT
+    });
 }
