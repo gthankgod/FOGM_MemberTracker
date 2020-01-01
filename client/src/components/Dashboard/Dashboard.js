@@ -22,7 +22,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                 </p>
                                 <button
                                     type="button"
-                                    className="btn btn-primary"
+                                    className="mr-2 mb-2 btn btn-primary"
                                     data-toggle="modal"
                                     data-target="#exampleModal7"
                                 >
@@ -65,8 +65,295 @@ const Dashboard = ({ isAuthenticated }) => {
                                         </div>
                                     </div>
                                 </div>
+                                <button
+                                    type="button"
+                                    className="mr-2 mb-2 btn btn-secondary"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal"
+                                >
+                                    Add Role to Member
+                                </button>
+                                <div
+                                    className="modal fade py-3"
+                                    id="exampleModal"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="exampleModalLabel">
+                                                    Assign Role to a Member
+              </h5>
+                                                <button
+                                                    type="button"
+                                                    className="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <form method="POST" action="/members/addrole">
+                                                    <div className="form-row">
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="First Name">First Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="firstName"
+                                                                placeholder="First Name"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="Last Name">Last Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="lastName"
+                                                                placeholder="Last Name"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-12">
+                                                            <label htmlFor="Password">Assign a Password</label>
+                                                            <input
+                                                                type="password"
+                                                                className="form-control"
+                                                                name="password"
+                                                                placeholder="Password should be at least 6 characters..."
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="Role">Assign a Role</label>
+                                                            <select name="role" className="form-control">
+                                                                <option selected value="Member">Member</option>
+                                                                <option value="Pastor">Pastor</option>
+                                                                <option value="Unit Head">Unit Head</option>
+                                                                <option value="Admin">Admin</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" className="btn btn-primary btn-block">
+                                                        Save Changes
+                                                     </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
+                                <button
+                                    type="button"
+                                    className="mr-2 mb-2 btn btn-warning"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal2"
+                                >
+                                    Add Member to Family
+      </button>
+                                <div
+                                    className="modal fade py-3"
+                                    id="exampleModal2"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="exampleModalLabel">
+                                                    Add Member to a Family
+              </h5>
+                                                <button
+                                                    type="button"
+                                                    className="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <form method="POST" action="/members/addmemfamily">
+                                                    <div className="form-row">
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="First Name">First Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="firstName"
+                                                                placeholder="First Name"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="Last Name">Last Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="lastName"
+                                                                placeholder="Last Name"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="family">Family Name</label>
+                                                            <select name="familyName" className="form-control">
+                                                                <option value="" selected disabled
+                                                                >Choose a Family</option
+                                                                >
+                                                                <option value="<%= family.familyName %>"
+                                                                ></option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="RoleinFamily">Assign a Role</label>
+                                                            <select name="roleInFamily" className="form-control">
+                                                                <option selected value="Head">Head</option>
+                                                                <option value="Father">Father</option>
+                                                                <option value="Mother">Mother</option>
+                                                                <option value="Daughter">Daughter</option>
+                                                                <option value="Son">Son</option>
+                                                                <option value="GrandChild">GrandChild</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <a href="!#" className="btn btn-primary mb-3">Add a New Family</a>
+                                                    <button type="submit" className="btn btn-primary btn-block">
+                                                        Save Changes
+                </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    className="mr-2 mb-2 btn btn-primary"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal3"
+                                >
+                                    Edit Member Info
+      </button>
+
+                                <div
+                                    className="modal fade py-3"
+                                    id="exampleModal3"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="exampleModalLabel">
+                                                    Edit Member Info
+              </h5>
+                                                <button
+                                                    type="button"
+                                                    className="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <form method="POST" action="/members/edit">
+                                                    <div className="form-row">
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="First Name">First Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="firstName"
+                                                                placeholder="First Name"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="Last Name">Last Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="lastName"
+                                                                placeholder="Last Name"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" className="btn btn-primary btn-block">
+                                                        Search htmlFor Member
+                </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    className="btn btn-danger"
+                                    data-toggle="modal"
+                                    data-target="#exampleModal4"
+                                >
+                                    Delete Member from Database
+      </button>
+                                <div
+                                    className="modal fade py-3"
+                                    id="exampleModal4"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div className="modal-dialog" role="document">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title" id="exampleModalLabel">
+                                                    Delete Member from Database
+              </h5>
+                                                <button
+                                                    type="button"
+                                                    className="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <form method="POST" action="/members/delete">
+                                                    <div className="form-row">
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="First Name">First Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="firstName"
+                                                                placeholder="First Name"
+                                                            />
+                                                        </div>
+                                                        <div className="form-group col-md-6">
+                                                            <label htmlFor="Last Name">Last Name</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                name="lastName"
+                                                                placeholder="Last Name"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" className="btn btn-danger btn-block">
+                                                        Delete Member
+                </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
