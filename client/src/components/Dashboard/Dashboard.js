@@ -129,7 +129,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                                         <div className="form-group col-md-6">
                                                             <label htmlFor="Role">Assign a Role</label>
                                                             <select name="role" className="form-control">
-                                                                <option selected value="Member">Member</option>
+                                                                <option value="Member">Member</option>
                                                                 <option value="Pastor">Pastor</option>
                                                                 <option value="Unit Head">Unit Head</option>
                                                                 <option value="Admin">Admin</option>
@@ -201,7 +201,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                                         <div className="form-group col-md-6">
                                                             <label htmlFor="family">Family Name</label>
                                                             <select name="familyName" className="form-control">
-                                                                <option value="" selected disabled
+                                                                <option value="" disabled
                                                                 >Choose a Family</option
                                                                 >
                                                                 <option value="<%= family.familyName %>"
@@ -211,7 +211,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                                         <div className="form-group col-md-6">
                                                             <label htmlFor="RoleinFamily">Assign a Role</label>
                                                             <select name="roleInFamily" className="form-control">
-                                                                <option selected value="Head">Head</option>
+                                                                <option value="Head">Head</option>
                                                                 <option value="Father">Father</option>
                                                                 <option value="Mother">Mother</option>
                                                                 <option value="Daughter">Daughter</option>

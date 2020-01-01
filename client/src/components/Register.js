@@ -2,8 +2,9 @@ import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
+import setAlert from '../actions/alerts'
 
-const Register = ({ history, isAuthenticated }) => {
+const Register = ({ history, isAuthenticated, setAlert }) => {
     const [inputState, setInputState] = useState({
         firstname: '',
         lastname: '',
@@ -25,7 +26,54 @@ const Register = ({ history, isAuthenticated }) => {
     }
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        history.push("/dashboard");
+        if (!inputState.firstname) {
+            return setAlert('Firstname is required', 'red')
+        }
+
+        if (!inputState.lastname) {
+            return setAlert('Lastname is required', 'red')
+        }
+
+        if (!inputState.gender) {
+            return setAlert('Gender is required', 'red')
+        }
+
+        if (!inputState.email) {
+            return setAlert('Email is required', 'red')
+        }
+
+        if (!inputState.homeaddress) {
+            return setAlert('Home Address is required', 'red')
+        }
+
+        if (!inputState.workaddress) {
+            return setAlert('Work Address is required', 'red')
+        }
+
+        if (!inputState.phonenumber) {
+            return setAlert('Phone Number is required', 'red')
+        }
+
+        if (!inputState.whatsappnumber) {
+            return setAlert('Whatsapp number is required', 'red')
+        }
+
+        if (!inputState.birthday) {
+            return setAlert('Birthday is required', 'red')
+        }
+
+        if (!inputState.branch) {
+            return setAlert('Branch is required', 'red')
+        }
+
+        if (!inputState.username) {
+            return setAlert('Username is required', 'red')
+        }
+
+        if (!inputState.unit) {
+            return setAlert('Unit is required', 'red')
+        }
+        // history.push("/dashboard");
 
     }
     if (!isAuthenticated) {
@@ -42,8 +90,10 @@ const Register = ({ history, isAuthenticated }) => {
                             <input
                                 type="text"
                                 className="form-control"
-                                name="firstName"
+                                name="firstname"
                                 placeholder="First Name"
+                                value={inputState.firstname}
+                                onChange={(e) => onChangeHandler(e)}
                             />
                         </div>
                         <div className="form-group col-md-6">
@@ -51,14 +101,17 @@ const Register = ({ history, isAuthenticated }) => {
                             <input
                                 type="text"
                                 className="form-control"
-                                name="lastName"
+                                name="lastname"
                                 placeholder="Last Name"
+                                value={inputState.lastname}
+                                onChange={(e) => onChangeHandler(e)}
                             />
                         </div>
                         <div className="form-group col-md-4">
                             <label htmlFor="Gender">Gender</label>
-                            <select name="gender" className="form-control">
-                                <option selected value="Male">Male</option>
+                            <select name="gender" className="form-control" value={inputState.gender} onChange={(e) => onChangeHandler(e)}>
+                                <option value="">Choose a gender</option>
+                                <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
@@ -69,6 +122,8 @@ const Register = ({ history, isAuthenticated }) => {
                                 className="form-control"
                                 name="email"
                                 placeholder="Email"
+                                value={inputState.email}
+                                onChange={(e) => onChangeHandler(e)}
                             />
                         </div>
                     </div>
@@ -77,8 +132,10 @@ const Register = ({ history, isAuthenticated }) => {
                         <input
                             type="text"
                             className="form-control"
-                            name="homeAddress"
+                            name="homeaddress"
                             placeholder="1234 Main St"
+                            value={inputState.homeaddress}
+                            onChange={(e) => onChangeHandler(e)}
                         />
                     </div>
                     <div className="form-group">
@@ -86,27 +143,30 @@ const Register = ({ history, isAuthenticated }) => {
                         <input
                             type="text"
                             className="form-control"
-                            name="workAddress"
+                            name="workaddress"
                             placeholder="Your Work Address"
+                            value={inputState.workaddress}
+                            onChange={(e) => onChangeHandler(e)}
                         />
                     </div>
                     <div className="form-row">
                         <div className="form-group col-md-6">
                             <label htmlFor="Phone Number">Phone Number</label>
-                            <input type="text" className="form-control" name="phoneNumber" />
+                            <input type="text" className="form-control" name="phonenumber" value={inputState.phonenumber} onChange={(e) => onChangeHandler(e)} />
                         </div>
                         <div className="form-group col-md-6">
                             <label htmlFor="Whatsapp Number">Whatsapp Number</label>
-                            <input type="text" className="form-control" name="whatsappNumber" />
+                            <input type="text" className="form-control" name="whatsappnumber" value={inputState.whatsappnumber} onChange={(e) => onChangeHandler(e)} />
                         </div>
                         <div className="form-group col-md-4">
                             <label htmlFor="birthday">Birthday</label>
-                            <input type="date" className="form-control" name="birthday" />
+                            <input type="date" className="form-control" name="birthday" value={inputState.birthday} onChange={(e) => onChangeHandler(e)} />
                         </div>
                         <div className="form-group col-md-4">
                             <label htmlFor="branch">Branch</label>
-                            <select name="branch" className="form-control">
-                                <option selected value="Headquarters">Headquarters</option>
+                            <select name="branch" className="form-control" value={inputState.branch} onChange={(e) => onChangeHandler(e)}>
+                                <option value="">Choose a Branch</option>
+                                <option value="Headquarters">Headquarters</option>
                                 <option value="Koloko">Koloko</option>
                                 <option value="Mokola">Mokola</option>
                                 <option value="Alakia">Alakia</option>
@@ -118,8 +178,9 @@ const Register = ({ history, isAuthenticated }) => {
                         </div>
                         <div className="form-group col-md-4">
                             <label htmlFor="Unit">Unit</label>
-                            <select name="unit" className="form-control">
-                                <option selected value="Choir">Choir</option>
+                            <select name="unit" className="form-control" value={inputState.unit} onChange={(e) => onChangeHandler(e)}>
+                                <option value="">Choose a unit</option>
+                                <option value="Choir">Choir</option>
                                 <option value="Media">Media</option>
                                 <option value="Ushering">Ushering</option>
                                 <option value="Intercessory">Intercessory</option>
@@ -145,9 +206,10 @@ const Register = ({ history, isAuthenticated }) => {
 }
 
 Register.propTypes = {
-    // register: PropTypes.func.isRequired
+    // register: PropTypes.func.isRequired,
+    setAlert: PropTypes.func.isRequired
 }
 const mapStateToProps = ({ auth }) => ({
     isAuthenticated: auth.isAuthenticated
 })
-export default connect(mapStateToProps)(Register);
+export default connect(mapStateToProps, { setAlert })(Register);
