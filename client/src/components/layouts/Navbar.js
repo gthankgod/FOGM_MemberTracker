@@ -20,7 +20,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" onClick={() => logout()}>Logout</Link>
+                            <Link className="nav-link" onClick={() => logout()} to="#">Logout</Link>
                         </li>
                     </ul>
                     <form className="form-inline active-cyan-4 ml-4">

@@ -76,7 +76,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                 <div
                                     className="modal fade py-3"
                                     id="exampleModal"
-                                    tabindex="-1"
+                                    tabIndex="-1"
                                     role="dialog"
                                     aria-labelledby="exampleModalLabel"
                                     aria-hidden="true"
@@ -157,7 +157,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                 <div
                                     className="modal fade py-3"
                                     id="exampleModal2"
-                                    tabindex="-1"
+                                    tabIndex="-1"
                                     role="dialog"
                                     aria-labelledby="exampleModalLabel"
                                     aria-hidden="true"
@@ -242,7 +242,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                 <div
                                     className="modal fade py-3"
                                     id="exampleModal3"
-                                    tabindex="-1"
+                                    tabIndex="-1"
                                     role="dialog"
                                     aria-labelledby="exampleModalLabel"
                                     aria-hidden="true"
@@ -304,7 +304,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                 <div
                                     className="modal fade py-3"
                                     id="exampleModal4"
-                                    tabindex="-1"
+                                    tabIndex="-1"
                                     role="dialog"
                                     aria-labelledby="exampleModalLabel"
                                     aria-hidden="true"
@@ -356,8 +356,9 @@ const Dashboard = ({ isAuthenticated }) => {
                                 </div>
                             </div>
                         </div>
-
-
+                        <div className="col-sm-4">
+                            <div id="chart"></div>
+                        </div>
                     </div>
                     <div className="row details">
                         <div className="col-xl-3 col-md-6 mb-4">
