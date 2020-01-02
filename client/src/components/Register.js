@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import setAlert from '../actions/alerts'
+import { register } from '../actions/auth'
 
-const Register = ({ history, isAuthenticated, setAlert }) => {
+const Register = ({ history, isAuthenticated, setAlert, register }) => {
     const [inputState, setInputState] = useState({
         firstname: '',
         lastname: '',
@@ -73,7 +74,9 @@ const Register = ({ history, isAuthenticated, setAlert }) => {
         if (!inputState.unit) {
             return setAlert('Unit is required', 'red')
         }
-        // history.push("/dashboard");
+        register(inputState);
+        setAlert('User registered Successfully');
+        history.push("/dashboard");
 
     }
     if (!isAuthenticated) {
@@ -206,10 +209,10 @@ const Register = ({ history, isAuthenticated, setAlert }) => {
 }
 
 Register.propTypes = {
-    // register: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
     setAlert: PropTypes.func.isRequired
 }
 const mapStateToProps = ({ auth }) => ({
     isAuthenticated: auth.isAuthenticated
 })
-export default connect(mapStateToProps, { setAlert })(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);

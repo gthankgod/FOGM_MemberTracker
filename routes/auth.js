@@ -58,45 +58,47 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/signup', async (req, res) => {
-    const { error } = validateMember(req.body);
-    if (error) return res.status(400).json({ msg: 'Invalid Entries' });
+    try {
+        const { error } = validateMember(req.body);
+        if (error) return res.status(400).json({ msg: 'Invalid Entries', status: 'error' });
 
-    let emailFinder = await Members.findOne({ username: req.body.username });
-    if (emailFinder) return res.status(400).json({ msg: 'Member with the given username already exist' });
+        let emailFinder = await Members.findOne({ username: req.body.username });
+        if (emailFinder) return res.status(400).json({ msg: 'Member with the given username already exist', status: 'error' });
 
-    const { firstname, lastname, username, family, gender, email, password, phonenumber, whatsappnumber, homeaddress, workaddress, branch, birthday, unit } = req.body;
+        const { firstname, lastname, username, family, gender, email, password, phonenumber, whatsappnumber, homeaddress, workaddress, branch, birthday, unit } = req.body;
 
-    member = new Members({
-        firstname,
-        lastname,
-        username,
-        family,
-        password,
-        gender,
-        email,
-        phonenumber,
-        whatsappnumber,
-        homeaddress,
-        workaddress,
-        branch,
-        birthday,
-        unit
-    });
+        member = new Members({
+            firstname,
+            lastname,
+            username,
+            family,
+            password,
+            gender,
+            email,
+            phonenumber,
+            whatsappnumber,
+            homeaddress,
+            workaddress,
+            branch,
+            birthday,
+            unit
+        });
 
-    const salt = await bcrypt.genSalt(10);
-    member.password = await bcrypt.hash(member.password, salt);
-    member = await member.save();
+        const salt = await bcrypt.genSalt(10);
+        member.password = await bcrypt.hash(member.password, salt);
+        member = await member.save();
 
-    const payload = {
-        member: {
-            id: member.id
+        const payload = {
+            member: {
+                id: member.id
+            }
         }
-    }
 
-    jwt.sign(payload, config.get("jwtSecret"), { expiresIn: 360000 }, (err, token) => {
-        if (err) throw err;
-        res.json({ token })
-    });
+        jwt.sign(payload, config.get("jwtSecret"), { expiresIn: 360000 }, (err, token) => {
+            if (err) throw err;
+            res.json({ token })
+        });
+    } catch (ex) { res.status(400).json({ msg: 'Server Error', status: 'error' }) }
 });
 
 function validate(member) {

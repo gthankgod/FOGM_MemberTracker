@@ -40,7 +40,7 @@ const Login = ({ isAuthenticated, login, history, setAlert }) => {
                     <small id="PasswordHelp" className="form-text text-muted">Please do not share your password with anyone else.</small>
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary btn-block">Submit</button>
             </form>
         </div>
     )

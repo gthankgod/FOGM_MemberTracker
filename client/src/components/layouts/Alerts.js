@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 const Alerts = ({ alerts }) => {
     if (alerts.length > 0 && alerts) {
-        return alerts.map(alert => <div className='alert alert-success' key={alert.id}> {alert.msg}</div>)
+        return alerts.map(alert => <div className='container alert alert-success mt-2' key={alert.id}> {alert.msg}</div>)
     } else return null;
 }
 

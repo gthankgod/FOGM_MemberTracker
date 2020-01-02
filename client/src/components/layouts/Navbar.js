@@ -17,7 +17,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
                     <ul className="navbar-nav">
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/register">Register</Link>
+                            <Link className="nav-link" to="/register">Add a new Member</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/members">View All Members</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" onClick={() => logout()} to="#">Logout</Link>

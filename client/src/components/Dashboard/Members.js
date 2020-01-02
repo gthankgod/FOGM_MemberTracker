@@ -1,41 +1,69 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 const Members = props => {
     return (
-        <div style={{ width: '90%', margin: 'auto' }}>
-            <h4 class="mb-4">All Members</h4>
-            <Link type="button" class="btn btn-success mb-4" to="/dashboard"
-            >Back to Dashboard</Link>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Gender</th>
-                        <th>Birthday</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Home Address</th>
-                        <th>Branch</th>
-                        <th>Role</th>
-                        <th>Unit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">ThankGod George</th>
-                        <td> member.gender</td>
-                        <td> member.birthday</td>
-                        <td> member.email</td>
-                        <td> member.phoneNumber</td>
-                        <td> member.homeAddress</td>
-                        <td> member.branch</td>
-                        <td> member.role</td>
-                        <td> member.unit</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div className="container">
+            <Link to="/dashboard" className="btn btn-secondary my-3">Back to Dashboard</Link>
+            <div className="table-responsive text-nowrap mt-2">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Whatsapp Number</th>
+                            <th scope="col">Home Address</th>
+                            <th scope="col">Work Address</th>
+                            <th scope="col">Branch</th>
+                            <th scope="col">Birthday</th>
+                            <th scope="col">Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                            <td>Cell</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }
