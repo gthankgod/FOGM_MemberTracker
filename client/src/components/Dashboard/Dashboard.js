@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom'
+import ChartDisplay from './Chart'
 
 const Dashboard = ({ isAuthenticated }) => {
     if (!isAuthenticated) {
@@ -488,10 +489,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                 <div className="card-footer pb-5 " style={{ backgroundColor: '#EAEAEA' }}></div>
                             </div>
                         </div>
-                        <div className="col card">
-                            <h2 className="section-heading pt-4 text-muted">Members Details</h2>
-
-                        </div>
+                        <ChartDisplay />
                     </div>
                 </div>
             </div>
