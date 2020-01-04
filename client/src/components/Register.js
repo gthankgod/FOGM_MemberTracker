@@ -76,7 +76,7 @@ const Register = ({ history, isAuthenticated, setAlert, register }) => {
         }
         register(inputState);
         setAlert('User registered Successfully');
-        history.push("/dashboard");
+        history.push("/members");
 
     }
     if (!isAuthenticated) {

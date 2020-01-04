@@ -1,7 +1,11 @@
 import { GET_MEMBERS } from './types';
 
-const initialState = {
-    members: null,
-    member: null,
-    loading: true
+export const getMembers = () => async dispatch => {
+    const res = await fetch('/members');
+    const member = await res.json();
+
+    dispatch({
+        type: GET_MEMBERS,
+        payload: member
+    });
 }

@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Redirect, Link } from 'react-router-dom'
+import { getMembers } from '../../actions/members'
 import ChartDisplay from './Chart'
 
-const Dashboard = ({ isAuthenticated }) => {
+const Dashboard = ({ isAuthenticated, member, getMembers }) => {
+
+    const { members } = member;
+    useEffect(() => {
+        getMembers();
+    }, []);
+
     if (!isAuthenticated) {
         return <Redirect to="/login" />
     }
@@ -224,7 +231,7 @@ const Dashboard = ({ isAuthenticated }) => {
                                                     <a href="!#" className="btn btn-primary mb-3">Add a New Family</a>
                                                     <button type="submit" className="btn btn-primary btn-block">
                                                         Save Changes
-                </button>
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>
@@ -358,7 +365,7 @@ const Dashboard = ({ isAuthenticated }) => {
                             </div>
                         </div>
                         <div className="col-sm-4">
-                            <div id="chart"></div>
+                            <ChartDisplay />
                         </div>
                     </div>
                     <div className="row details">
@@ -387,8 +394,9 @@ const Dashboard = ({ isAuthenticated }) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="card-text pb-2 border-top pt-2 text-center"
-                                        style={{ color: 'black', fontSize: '40px', fontWeight: '500' }}>200</p>
+                                    {members && members.length > 0 ?
+                                        <p className="card-text pb-2 border-top pt-2 text-center"
+                                            style={{ color: 'black', fontSize: '40px', fontWeight: '500' }}>{members.length}</p> : null}
                                 </div>
                                 <div className="card-footer pb-5 " style={{ backgroundColor: '#EAEAEA' }}></div>
                             </div>
@@ -498,7 +506,8 @@ const Dashboard = ({ isAuthenticated }) => {
     )
 }
 
-const mapStateToProps = ({ auth }) => ({
-    isAuthenticated: auth.isAuthenticated
+const mapStateToProps = ({ auth, member }) => ({
+    isAuthenticated: auth.isAuthenticated,
+    member
 });
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps, { getMembers })(Dashboard)

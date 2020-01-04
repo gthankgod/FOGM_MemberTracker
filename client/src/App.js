@@ -9,7 +9,7 @@ import Register from './components/Register';
 import err from './components/layouts/err';
 import store from './store';
 import Dashboard from './components/Dashboard/Dashboard';
-import Members from './components/Dashboard/Members';
+import Members from './components/Members';
 import Alerts from './components/layouts/Alerts';
 
 
