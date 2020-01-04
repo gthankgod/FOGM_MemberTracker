@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Members = ({ member, getMembers }) => {
     const { members } = member;
+    console.log(members);
     useEffect(() => {
         getMembers();
     }, []);
